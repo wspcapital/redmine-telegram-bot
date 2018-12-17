@@ -53,8 +53,8 @@ type Controller interface {
 type Respondent struct {
 	Sender          MessageSender
 	ReceivedMessage *tgbotapi.Message
-	State *converse_state.State
-	Localizer *i18n.Localizer
+	State           *converse_state.State
+	Localizer       *i18n.Localizer
 }
 
 // Reply to a message.
@@ -67,10 +67,17 @@ func (r *Respondent) Reply() {
 
 	// Routing for messages
 
-	if r.State.IsJustCreated() {
-		ctrl = new(NewState)
-	} else if r.ReceivedMessage.IsCommand() {
+	if r.ReceivedMessage.IsCommand() {
+		switch r.ReceivedMessage.Command() {
+		case "help":
 
+			break
+		default:
+			ctrl = new(UnknownCommand)
+			break
+		}
+	} else if r.State.IsJustCreated() {
+		ctrl = new(NewState)
 	} else {
 
 	}

@@ -5,21 +5,22 @@ import (
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 )
 
-type NewState struct {
+type UnknownCommand struct {
 
 }
 
-func (c *NewState) CreateMessage(respondent *Respondent) tgbotapi.Chattable  {
+func (c *UnknownCommand) CreateMessage(respondent *Respondent) tgbotapi.Chattable  {
 
 	msgText := respondent.Localizer.MustLocalize(&i18n.LocalizeConfig{
 		DefaultMessage: &i18n.Message{
-			ID:          "WelcomeMessage",
+			ID:          "UnknownCommandMessage",
 			Description: "Welcome message when chat firstly created",
-			Other:       "Hi! Nice to meet you.\nFor more information, use the command. /help",
+			Other:       "I do not known this command. Please use /help for see *full list of commands*.",
 		},
 	})
 
 	msg := tgbotapi.NewMessage(respondent.State.ID, msgText)
+	msg.ParseMode = tgbotapi.ModeMarkdown
 
 	return msg
 }
