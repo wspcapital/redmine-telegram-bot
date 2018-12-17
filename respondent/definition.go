@@ -9,7 +9,6 @@ import (
 	"os"
 	"redmine-telegram-bot/converse_state"
 	state_store "redmine-telegram-bot/converse_state/dynamodb"
-	"redmine-telegram-bot/respondent/controllers"
 )
 
 func New(sender MessageSender, receivedMessage *tgbotapi.Message) (*Respondent, error) {
@@ -69,7 +68,7 @@ func (r *Respondent) Reply() {
 	// Routing for messages
 
 	if r.State.IsJustCreated() {
-		ctrl = new(controllers.NewState)
+		ctrl = new(NewState)
 	} else if r.ReceivedMessage.IsCommand() {
 
 	} else {
