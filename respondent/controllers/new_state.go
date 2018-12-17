@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"github.com/go-telegram-bot-api/telegram-bot-api"
-	"webcapstaffbot/respondent"
+	"redmine-telegram-bot/respondent"
 )
 
 type NewState struct {

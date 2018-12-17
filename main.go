@@ -5,7 +5,7 @@ import (
 	_ "github.com/joho/godotenv/autoload"
 	"log"
 	"os"
-	"webcapstaffbot/respondent"
+	"redmine-telegram-bot/respondent"
 )
 
 func main() {

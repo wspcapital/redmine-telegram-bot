@@ -7,9 +7,9 @@ import (
 	"gopkg.in/yaml.v2"
 	"log"
 	"os"
-	"webcapstaffbot/converse_state"
-	state_store "webcapstaffbot/converse_state/dynamodb"
-	"webcapstaffbot/respondent/controllers"
+	"redmine-telegram-bot/converse_state"
+	state_store "redmine-telegram-bot/converse_state/dynamodb"
+	"redmine-telegram-bot/respondent/controllers"
 )
 
 func New(sender MessageSender, receivedMessage *tgbotapi.Message) (*Respondent, error) {

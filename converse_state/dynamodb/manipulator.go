@@ -9,7 +9,7 @@ import (
 	"os"
 	"strconv"
 	"time"
-	"webcapstaffbot/converse_state"
+	"redmine-telegram-bot/converse_state"
 )
 
 // Format of datetime in database
