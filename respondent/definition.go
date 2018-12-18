@@ -70,7 +70,7 @@ func (r *Respondent) Reply() {
 	if r.ReceivedMessage.IsCommand() {
 		switch r.ReceivedMessage.Command() {
 		case "help":
-
+			ctrl = new(HelpCommand)
 			break
 		default:
 			ctrl = new(UnknownCommand)

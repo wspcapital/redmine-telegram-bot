@@ -5,6 +5,7 @@ import (
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 )
 
+// Unknown command
 type UnknownCommand struct {
 
 }
@@ -21,6 +22,21 @@ func (c *UnknownCommand) CreateMessage(respondent *Respondent) tgbotapi.Chattabl
 
 	msg := tgbotapi.NewMessage(respondent.State.ID, msgText)
 	msg.ParseMode = tgbotapi.ModeMarkdown
+
+	return msg
+}
+
+// Help command
+type HelpCommand struct {
+
+}
+
+func (c *HelpCommand) CreateMessage(respondent *Respondent) tgbotapi.Chattable  {
+
+	msgText := "help <b>command</b>"
+
+	msg := tgbotapi.NewMessage(respondent.State.ID, msgText)
+	msg.ParseMode = tgbotapi.ModeHTML
 
 	return msg
 }
