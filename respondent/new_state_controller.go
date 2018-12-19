@@ -21,5 +21,8 @@ func (c *NewState) CreateMessage(respondent *Respondent) tgbotapi.Chattable  {
 
 	msg := tgbotapi.NewMessage(respondent.State.ID, msgText)
 
+	respondent.State.CurrentQuestion = QuestionUnset
+	respondent.State.UpdateState()
+
 	return msg
 }

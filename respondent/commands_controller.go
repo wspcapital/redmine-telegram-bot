@@ -23,6 +23,9 @@ func (c *UnknownCommand) CreateMessage(respondent *Respondent) tgbotapi.Chattabl
 	msg := tgbotapi.NewMessage(respondent.State.ID, msgText)
 	msg.ParseMode = tgbotapi.ModeMarkdown
 
+	respondent.State.CurrentQuestion = QuestionUnset
+	respondent.State.UpdateState()
+
 	return msg
 }
 
@@ -37,6 +40,9 @@ func (c *HelpCommand) CreateMessage(respondent *Respondent) tgbotapi.Chattable  
 
 	msg := tgbotapi.NewMessage(respondent.State.ID, msgText)
 	msg.ParseMode = tgbotapi.ModeHTML
+
+	respondent.State.CurrentQuestion = QuestionUnset
+	respondent.State.UpdateState()
 
 	return msg
 }

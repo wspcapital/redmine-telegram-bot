@@ -11,6 +11,8 @@ import (
 	state_store "redmine-telegram-bot/converse_state/dynamodb"
 )
 
+const QuestionUnset  = 0
+
 func New(sender MessageSender, receivedMessage *tgbotapi.Message) (*Respondent, error) {
 	r := new(Respondent)
 
@@ -60,8 +62,6 @@ type Respondent struct {
 // Reply to a message.
 // Here is all the business logic of response.
 func (r *Respondent) Reply() {
-
-	r.State.SetJustCreated(true)
 
 	var ctrl Controller
 
